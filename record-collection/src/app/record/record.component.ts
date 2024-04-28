@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { Record } from '../record';
 
 @Component({
   selector: 'app-record',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <section class="listing">
       <img
@@ -17,6 +18,7 @@ import { Record } from '../record';
       />
       <h2 class="listing-heading">{{ record.name }}</h2>
       <p class="listing-location">{{ record.artist }}, {{ record.release.toLocaleDateString() }}</p>
+      <a [routerLink]="['/details', record.id]">Learn More</a>
     </section>
   `,
   styleUrl: './record.component.scss'
