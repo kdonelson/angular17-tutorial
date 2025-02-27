@@ -5,10 +5,9 @@ import { RouterModule } from '@angular/router';
 import { Record } from '../record';
 
 @Component({
-  selector: 'app-record',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-record',
+    imports: [CommonModule, RouterModule],
+    template: `
     <section class="listing">
       <img
         class="listing-photo"
@@ -21,7 +20,7 @@ import { Record } from '../record';
       <a [routerLink]="['/details', record.recordId]">Learn More</a>
     </section>
   `,
-  styleUrl: './record.component.scss'
+    styleUrl: './record.component.scss'
 })
 export class RecordComponent {
   @Input() record!: Record;

@@ -7,10 +7,9 @@ import { Record } from '../record';
 import { RecordService } from '../record.service';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RecordComponent],
-  template: `
+    selector: 'app-home',
+    imports: [CommonModule, RecordComponent],
+    template: `
     <section>
       <form>
         <input type="text" placeholder="Filter by Name" (keyup)="filterResults(filter.value)" #filter/>
@@ -22,7 +21,7 @@ import { RecordService } from '../record.service';
       }      
     </section>
   `,
-  styleUrl: './home.component.scss'
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   recordList: Record[] = [];

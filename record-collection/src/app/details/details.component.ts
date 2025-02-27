@@ -7,10 +7,9 @@ import { Record } from '../record';
 import { RecordService } from '../record.service';
 
 @Component({
-  selector: 'app-details',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-details',
+    imports: [CommonModule],
+    template: `
     @if(record !== undefined) {
       <article>
       <img
@@ -34,7 +33,7 @@ import { RecordService } from '../record.service';
     }
     
   `,
-  styleUrl: './details.component.scss'
+    styleUrl: './details.component.scss'
 })
 export class DetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
