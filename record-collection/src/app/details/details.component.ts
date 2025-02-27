@@ -16,17 +16,17 @@ import { RecordService } from '../record.service';
       <img
         class="listing-photo"
         [src]="record.photo"
-        alt="photo of {{ record.name }}"
+        alt="photo of {{ record.title }}"
       />
       <section class="listing-description">
-        <h2 class="listing-heading">{{ record.name }}</h2>
+        <h2 class="listing-heading">{{ record.title }}</h2>
         <p class="listing-location">{{ record.artist }}</p>
       </section>
       <section class="listing-features">
         <h2 class="section-heading">About this Record</h2>
         <ul>
           <li>Release Year: {{ releaseDateString }}</li>
-          <li>Record Label: {{ record.label }}</li>
+          <li>Record Label: {{ record.recordLabel }}</li>
         </ul>
       </section>
 
@@ -44,8 +44,10 @@ export class DetailsComponent {
 
   constructor() {
     const recordId = Number(this.route.snapshot.params['id']);
-    this.record = this.recordService.getRecordById(recordId);
+    this.recordService.getRecordById(recordId).then((record) => {
+      this.record = record;
+    });
 
-    this.releaseDateString = this.record !== undefined ? this.record?.release.toDateString() : "";
+    this.releaseDateString = this.record !== undefined ? this.record?.releaseDate.toDateString() : "";
   }
 }

@@ -1,8 +1,8 @@
 export interface Record {
-    id: number;
-    name: string;
+    recordId: number;
+    title: string;
     artist: string;
-    label: string;
-    release: Date;
+    releaseDate: Date;
+    recordLabel: string;
     photo: string;
 }

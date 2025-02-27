@@ -13,8 +13,7 @@ import { RecordService } from '../record.service';
   template: `
     <section>
       <form>
-        <input type="text" placeholder="Filter by Name" #filter/>
-        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+        <input type="text" placeholder="Filter by Name" (keyup)="filterResults(filter.value)" #filter/>
       </form>
     </section>
     <section class="results">
@@ -31,8 +30,10 @@ export class HomeComponent {
   filteredRecordList: Record[] = [];
 
   constructor() {
-    this.recordList = this.recordService.getAllRecords();
-    this.filteredRecordList = this.recordList;
+    this.recordService.getAllRecords().then((recordList: Record[]) => {
+      this.recordList = recordList;
+      this.filteredRecordList = recordList;
+    });
   }
 
   filterResults(text: string) {
@@ -40,8 +41,11 @@ export class HomeComponent {
       this.filteredRecordList = this.recordList;
     }
 
+    const lowerCaseText = text.toLowerCase();
+
     this.filteredRecordList = this.recordList.filter(
-      (record) => record?.name.toLowerCase().includes(text.toLowerCase()),
+      (record) => record?.title.toLowerCase().includes(lowerCaseText) ||
+      record?.artist.toLowerCase().includes(lowerCaseText),
     );
   }
 }

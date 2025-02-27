@@ -13,12 +13,12 @@ import { Record } from '../record';
       <img
         class="listing-photo"
         [src]="record.photo"
-        alt="record photo of {{ record.name }}"
+        alt="record photo of {{ record.title }}"
         crossorigin
       />
-      <h2 class="listing-heading">{{ record.name }}</h2>
-      <p class="listing-location">{{ record.artist }}, {{ record.release.toLocaleDateString() }}</p>
-      <a [routerLink]="['/details', record.id]">Learn More</a>
+      <h2 class="listing-heading">{{ record.title }}</h2>
+      <p class="listing-location">{{ record.artist }}</p>
+      <a [routerLink]="['/details', record.recordId]">Learn More</a>
     </section>
   `,
   styleUrl: './record.component.scss'
